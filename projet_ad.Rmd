@@ -1,0 +1,55 @@
+---
+title: "Projet Analyse de données"
+author: "Florie Brion-Bouvier"
+date: "20 novembre 2018"
+output: pdf_document
+---
+
+```{r}
+library("ggplot2")
+library("dplyr")
+library("tidyr")
+```
+
+
+```{r}
+sapply(spnbmd,class)
+```
+
+
+```{r}
+ggplot(data = spnbmd, mapping = aes(x = age)) + 
+  geom_freqpoly(mapping = aes(colour = ethnic), binwidth = 0.5)
+```
+
+```{r}
+ggplot(data = spnbmd) +
+  geom_bar(mapping = aes(x = ethnic))
+```
+
+```{r}
+ggplot(data = spnbmd) +
+  geom_histogram(mapping = aes(x = age), binwidth = 0.2)
+```
+
+```{r}
+colnames(spnbmd)[colnames(spnbmd)=="spnbmd"] <- "spnbmd_v"
+```
+
+
+
+```{r}
+ggplot(data = spnbmd, mapping = aes(x = ethnic, y = spnbmd_v)) +
+  geom_boxplot()
+```
+
+```{r}
+ggplot(data = spnbmd, mapping = aes(x = sex, y = spnbmd_v)) +
+  geom_boxplot()
+```
+
+```{r}
+ggplot(data = spnbmd) +
+  geom_point(mapping = aes(x = age, y = spnbmd_v))
+```
+
